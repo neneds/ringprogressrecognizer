@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-protocol RingViewDelegate: class {
+public protocol RingViewDelegate: class {
     func didUpdateValue(view: RingView, value : Double)
 }
 
 @IBDesignable
-public class RingView: UIView {
+open class RingView: UIView {
     
     // MARK: Line Cap
     public enum LineCap: Int {
@@ -35,10 +35,10 @@ public class RingView: UIView {
     // MARK: Properties
     weak var delegate: RingViewDelegate?
     private var circleHandle: UIView?
-    var lineCap: LineCap = .round
+    open var lineCap: LineCap = .round
     
     
-    var progress: Float = 0 {
+    open var progress: Float = 0 {
         didSet {
             if progress < 0 {
                 progress = 0
@@ -77,38 +77,38 @@ public class RingView: UIView {
     // MARK: Inspectable Properties
     @IBInspectable let circleHandleSize: Double = 17.0
     @IBInspectable var isCircleHandleEnabled: Bool = true
-    @IBInspectable public var minValue: Double = 10 {
+    @IBInspectable open var minValue: Double = 10 {
         didSet {
             updateProgressStroke()
         }
     }
     
-    @IBInspectable public var maxValue: Double = 100 {
+    @IBInspectable open var maxValue: Double = 100 {
         didSet {
             updateProgressStroke()
         }
     }
     
-    @IBInspectable public var progressTintColor: UIColor? = UIColor.blue {
+    @IBInspectable open var progressTintColor: UIColor? = UIColor.blue {
         didSet {
             circleHandle?.backgroundColor = progressTintColor
             updateProgressStroke()
         }
     }
     
-    @IBInspectable public var trackWidth: CGFloat = 2 {
+    @IBInspectable open var trackWidth: CGFloat = 2 {
         didSet {
             updateProgressStroke()
         }
     }
     
-    @IBInspectable public var progressWidth: CGFloat = 6 {
+    @IBInspectable open var progressWidth: CGFloat = 6 {
         didSet {
             updateProgressStroke()
         }
     }
     
-    @IBInspectable public var trackTintColor: UIColor? = UIColor.darkGray {
+    @IBInspectable open var trackTintColor: UIColor? = UIColor.darkGray {
         didSet {
             updateProgressStroke()
         }
@@ -120,7 +120,7 @@ public class RingView: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         setupCircleView()
         setupGestureRecognizer()
@@ -144,7 +144,7 @@ public class RingView: UIView {
         setupGestureRecognizer()
     }
     
-    public override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setupCircleView()
         setupGestureRecognizer()
@@ -177,7 +177,7 @@ public class RingView: UIView {
         self.insertSubview(circleHandle, aboveSubview: self)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateProgressStroke()
     }
     
@@ -193,7 +193,7 @@ public class RingView: UIView {
        setNeedsDisplay()
     }
     
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         let bounds: CGRect = self.bounds
         let radius = (min(bounds.size.width, bounds.size.height) / 2.0)
         setTrackPath(radius: radius)

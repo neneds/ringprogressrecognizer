@@ -9,7 +9,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-class CircularGestureRecognizer: UIGestureRecognizer {
+open class CircularGestureRecognizer: UIGestureRecognizer {
     
     /// rotation in radians
     fileprivate(set) open var rotation: CGFloat = 0.0
@@ -23,7 +23,7 @@ class CircularGestureRecognizer: UIGestureRecognizer {
     /// ignore event from center in %
     fileprivate(set) open var ignoreDistanceFromCenter: CGFloat = 10.0
     
-    ///
+    /// view that will receive touch events
     fileprivate(set) var controlView: UIView!
     
     /// rotation center
@@ -40,7 +40,6 @@ class CircularGestureRecognizer: UIGestureRecognizer {
     
     public init(target: Any?, action: Selector?, to controlView: UIView) {
         super.init(target: target, action: action)
-        
         self.controlView = controlView
         anchor = CGPoint(x: controlView.bounds.midX, y: controlView.bounds.midY)
     }
@@ -69,9 +68,9 @@ class CircularGestureRecognizer: UIGestureRecognizer {
         rotation = currentAngle - previousAngle
         
         if rotation > .pi {
-            rotation -= .pi*2
+            rotation -= .pi * 2
         } else if rotation < -.pi {
-            rotation += .pi*2
+            rotation += .pi * 2
         }
         
         clockwiseDirection = currentAngle - previousAngle > 0
@@ -121,7 +120,6 @@ class CircularGestureRecognizer: UIGestureRecognizer {
     }
     
     fileprivate func calculateDistance(fromCenter point: CGPoint) -> Float {
-        
         let dx: CGFloat = CGFloat(point.x - center.x)
         let dy: CGFloat = CGFloat(point.y - center.y)
         return sqrt(Float(dx * dx + dy * dy))
