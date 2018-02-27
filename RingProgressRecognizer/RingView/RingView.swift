@@ -196,14 +196,14 @@ public class RingView: UIView {
     override public func draw(_ rect: CGRect) {
         let bounds: CGRect = self.bounds
         let radius = (min(bounds.size.width, bounds.size.height) / 2.0)
-        setTrackLayer(radius: radius)
-        setProgressLayer(radius: radius)
+        setTrackPath(radius: radius)
+        setProgressPath(radius: radius)
         if isCircleHandleEnabled {
             moveHandle(value: self.progress)
         }
     }
     
-    private func setProgressLayer(radius: CGFloat) {
+    private func setProgressPath(radius: CGFloat) {
         let path: UIBezierPath = UIBezierPath()
         let angle = angleFromValue(value: self.progress)
         var center = CGPoint()
@@ -219,21 +219,7 @@ public class RingView: UIView {
         path.stroke()
     }
     
-    private func setHandleLayer() {
-
-        let radius = (min(bounds.size.width, bounds.size.height) / 2.0)
-        let angle = angleFromValue(value: self.progress)
-        var center = CGPoint()
-        center.x = bounds.origin.x + bounds.size.width / 2.0
-        center.y = bounds.origin.y + bounds.size.height / 2.0
-        let origin = self.point(angle: CGFloat(angle), radius: radius - 5, centerX: center.x, centerY: center.y)
-        let newCoordinate = CGPoint(x: origin.x / 2, y: origin.y / 2)
-        let ovalPath = UIBezierPath(ovalIn: CGRect(x: newCoordinate.x, y: newCoordinate.y, width: CGFloat(circleHandleSize), height: CGFloat(circleHandleSize)))
-        progressTintColor?.setFill()
-        ovalPath.fill()
-    }
-    
-    private func setTrackLayer(radius: CGFloat) {
+    private func setTrackPath(radius: CGFloat) {
         let path2: UIBezierPath = UIBezierPath()
         path2.lineWidth = trackWidth
         var center = CGPoint()
