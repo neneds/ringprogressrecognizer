@@ -10,6 +10,8 @@
 		E62408CC2045E301001D526C /* RingProgressRecognizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62408C22045E300001D526C /* RingProgressRecognizer.framework */; };
 		E62408D12045E301001D526C /* RingProgressRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62408D02045E301001D526C /* RingProgressRecognizerTests.swift */; };
 		E62408D32045E301001D526C /* RingProgressRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = E62408C52045E300001D526C /* RingProgressRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E62408DF2045E327001D526C /* CircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62408DE2045E327001D526C /* CircularGestureRecognizer.swift */; };
+		E62408E12045E330001D526C /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62408E02045E330001D526C /* RingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		E62408CB2045E301001D526C /* RingProgressRecognizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RingProgressRecognizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62408D02045E301001D526C /* RingProgressRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressRecognizerTests.swift; sourceTree = "<group>"; };
 		E62408D22045E301001D526C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E62408DE2045E327001D526C /* CircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularGestureRecognizer.swift; sourceTree = "<group>"; };
+		E62408E02045E330001D526C /* RingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		E62408C42045E300001D526C /* RingProgressRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				E62408DD2045E318001D526C /* RingView */,
+				E62408DC2045E30C001D526C /* CircularGestureRecognizer */,
 				E62408C52045E300001D526C /* RingProgressRecognizer.h */,
 				E62408C62045E300001D526C /* Info.plist */,
 			);
@@ -84,6 +90,22 @@
 				E62408D22045E301001D526C /* Info.plist */,
 			);
 			path = RingProgressRecognizerTests;
+			sourceTree = "<group>";
+		};
+		E62408DC2045E30C001D526C /* CircularGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				E62408DE2045E327001D526C /* CircularGestureRecognizer.swift */,
+			);
+			path = CircularGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		E62408DD2045E318001D526C /* RingView */ = {
+			isa = PBXGroup;
+			children = (
+				E62408E02045E330001D526C /* RingView.swift */,
+			);
+			path = RingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +170,7 @@
 				TargetAttributes = {
 					E62408C12045E300001D526C = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					E62408CA2045E301001D526C = {
@@ -196,6 +219,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62408E12045E330001D526C /* RingView.swift in Sources */,
+				E62408DF2045E327001D526C /* CircularGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +359,7 @@
 		E62408D72045E301001D526C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neneds.rpr.RingProgressRecognizer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +382,7 @@
 		E62408D82045E301001D526C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +404,7 @@
 		E62408DA2045E301001D526C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P45ZSSC9ZG;
 				INFOPLIST_FILE = RingProgressRecognizerTests/Info.plist;
@@ -390,6 +419,7 @@
 		E62408DB2045E301001D526C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P45ZSSC9ZG;
 				INFOPLIST_FILE = RingProgressRecognizerTests/Info.plist;
